@@ -1,0 +1,131 @@
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+</head> -->
+{% extends 'adminindex.html' %}
+{% block bb %}
+<body>
+  <br><br><br><br>
+  <form action="">
+    <a class="btn btn-success" href="printdoctor" ></button>Print</a>
+  </form>
+
+  <form method="post" id="search-form">
+    {% csrf_token %}
+    <center>
+        <table class="table" style="width:500px">
+            <tr>
+                <th> 
+                    <input  type="search"  class="form-control" id="search_text" name="pla" placeholder="Search By Name"></th>
+                <td><input type="submit" id="normalsearch" class="btn btn-success"  name="ser" value="SEARCH">
+                </td>
+                <td><button  type="button" id="search_button" class="btn btn-warning">Voice Search</button></td>
+            </tr>
+        </table>
+    </center>
+  </form>
+
+
+  <center>
+  <h2>DOCTORS</h2>
+  <table class="table table-striped" border="2"> 
+    <tr>
+      <th style="color: black;">sl.no</th>
+      <th style="color: black;">Name</th>
+      <th style="color: black;">Place</th>
+      <th style="color: black;">Email</th>
+      <th  style="color: black;">Action</th>
+
+      {% comment %} <th style="color: black;">Phone</th>
+      <th style="color: black;">Qualification</th>
+      <th style="color: black;">Experience</th> {% endcomment %}
+      
+    </tr>
+    {% for i in val %}
+    <tr>
+      <td style="color: black;">{{forloop.counter}}</td>
+      <td style="color: black;">{{i.first_name}} {{i.last_name}}</td>
+      <td style="color: black;">{{i.place}}</td>
+      <td style="color: black;">{{i.email}}</td>
+      <td><a href="/admin_view_doctor/{{i.doctor_id}}" class="btn btn-success">View</a></td>
+      {% comment %} <td style="color: black;">{{i.phone}}</td>
+      <td style="color: black;">{{i.qualification}}</td>
+      <td style="color: black;">{{i.experience}}</td>
+       {% endcomment %}
+    </tr>
+    {% endfor %}
+  </table>
+</form>
+</body>
+<br><br><br><br>
+</center>
+{% endblock %}
+
+<script>
+  var voice = {
+  // (A) INIT SPEECH RECOGNITION
+  sform : null, // HTML SEARCH FORM
+  sfield : null, // HTML SEARCH FIELD
+  sbtn : null, // HTML VOICE SEARCH BUTTON
+  recog : null, // SPEECH RECOGNITION OBJECT
+  init : function () {
+    // (A1) GET HTML ELEMENTS
+    voice.sform = document.getElementById("search-form");
+    voice.sfield = document.getElementById("search_text");
+    voice.sbtn = document.getElementById("search_button");
+ 
+    // (A2) GET MICROPHONE ACCESS
+    navigator.mediaDevices.getUserMedia({ audio: true })
+    .then((stream) => {
+      // (A3) SPEECH RECOGNITION OBJECT + SETTINGS
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      voice.recog = new SpeechRecognition();
+      voice.recog.lang = "en-US";
+      voice.recog.continuous = false;
+      voice.recog.interimResults = false;
+ 
+      // (A4) POPUPLATE SEARCH FIELD ON SPEECH RECOGNITION
+      voice.recog.onresult = (evt) => {
+        let said = evt.results[0][0].transcript.toLowerCase();
+        voice.sfield.value = said;
+        // voice.sform.submit();
+        // OR RUN AN AJAX/FETCH SEARCH
+        voice.stop();
+        
+        var normalSearch = document.getElementById("normalsearch")
+        normalSearch.click()
+      };
+ 
+      // (A5) ON SPEECH RECOGNITION ERROR
+      voice.recog.onerror = (err) => { console.error(err); };
+ 
+      // (A6) READY!
+      voice.sbtn.disabled = false;
+      voice.stop();
+    })
+    .catch((err) => {
+      console.error(err);
+      voice.sbtn.value = "Please enable access and attach microphone.";
+    });
+  },
+ 
+  // (B) START SPEECH RECOGNITION
+  start : () => {
+    voice.recog.start();
+    voice.sbtn.onclick = voice.stop;
+    voice.sbtn.value = "Speak Now Or Click Again To Cancel";
+  },
+ 
+  // (C) STOP/CANCEL SPEECH RECOGNITION
+  stop : () => {
+    voice.recog.stop();
+    voice.sbtn.onclick = voice.start;
+    voice.sbtn.value = "Press To Speak";
+  }
+};
+window.addEventListener("DOMContentLoaded", voice.init); 
+
+</script>
+<!-- </html> -->

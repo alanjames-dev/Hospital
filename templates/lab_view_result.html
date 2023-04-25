@@ -1,0 +1,32 @@
+{% extends 'labindex.html' %}
+{% block b4 %}
+<body>
+  <br><br><br><br>
+  <h1 style="color: black;">View Result</h1>
+<form id="form1" name="form1" method="post" action="">
+  <table class="table table-striped">
+    <tr>
+      {% comment %} <th style="color: black;">Patient</th> {% endcomment %}
+
+      <th style="color: black;">Test Item</th>
+      <th style="color: black;">Details</th>
+      <th style="color: black;">image</th>
+      <th style="color: black;">Date</th>
+    </tr>
+    {% for i in q %}
+    <tr>
+      {% comment %} <td style="color: black;">{{i.booking.patient_id.first_name}} {{i.booking.patient_id.last_name}}</td> {% endcomment %}
+      <td style="color: black;">{{i.test_item}}</td>
+      <td style="color: black;">{{i.details}}</td>
+      {% if i.test_item == "Scanning" or i.test_item == "X-Ray" %}
+      <td style="color: black;"><a href="/static/uploads/{{i.image}}"><img src="/static/uploads/{{i.image}}" height="100" width="100" alt=""></a></td>
+     {% else %}
+     <td> </td>
+      {% endif %}
+      <td style="color: black;">{{i.date}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}

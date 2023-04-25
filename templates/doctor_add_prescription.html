@@ -1,0 +1,108 @@
+{% extends 'doctorindex.html' %}
+{% block b7 %}
+               
+<link href='https://clinicaltables.nlm.nih.gov/autocomplete-lhc-versions/17.0.2/autocomplete-lhc.min.css' rel="stylesheet">
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+<script src='https://clinicaltables.nlm.nih.gov/autocomplete-lhc-versions/17.0.2/autocomplete-lhc.min.js'></script>
+
+
+            <div class="clearfix"></div>
+                   
+  <!--//photoday-section--> 
+  <!--w3-agileits-pane--> 
+    <!--//w3-agileits-pane--> 
+<!-- script-for sticky-nav -->
+  
+    <!-- /script-for sticky-nav -->
+<!--inner block start here-->
+
+
+<div class="inner-block">
+
+
+
+<center>
+		<br>
+		<h1>ADD PRESCRIPTION</h1>
+		<br><br>
+	
+	<form method="post">
+  
+
+
+      <table class="table" style="width: 600PX;color: black">
+        <tr>
+          <th style="color: black;">Doctor</th>
+          <td><input type="text" name="doc" class="form-control" readonly value="{{name}}"></td>
+     </tr>
+      
+      <tr>
+        <th style="color: black">Diseases</th>
+        <td><input type="text" id="icd10" style="text-transform:capitalize;" name="dis"  required class="form-control" oninput="opdt()">
+          {% comment %} <input type="text" name="date" id="store" required class="form-control"></td> {% endcomment %}
+        </td>
+      </tr>
+      <tr>
+        <th style="color: black">Allergies</th>
+        <td><select name="ags" required class="form-control" id="">
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select></td>
+       </tr>
+      <tr>
+        <th style="color: black">Prescription</th>
+        <td>
+            <textarea name="pres"   required class="form-control" cols="80" rows="5"></textarea>
+        </td>
+
+      </tr>
+      <tr><td><br></td></tr>
+      <tr>
+        <td colspan="2" align="center"><input class="btn btn-info" type="submit" name="doctor" value="ADD"></td>
+      </tr>
+      </table>
+
+
+	</form>
+
+  <script>
+  new Def.Autocompleter.Search('icd10', 'https://clinicaltables.nlm.nih.gov/api/icd10cm/v3/search?sf=code,name',
+ {tableFormat: true, valueCols: [0], colHeaders: ['Code', 'Name']});
+
+
+ function opdt(){
+  if(document.getElementById('store').value == ""){
+
+      document.getElementById('store').value=document.getElementById('icd10').value
+
+  }else{
+      
+      document.getElementById('store').value=document.getElementById('store').value+","+document.getElementById('icd10').value
+  }
+
+}
+  </script>
+  <h1 style="color: black;">Prescriptions</h1>
+  <table class="table" style="width: 1000px;">
+    <tr>
+      <th style="color: black;">#</th>
+      <th style="color: black;">Diseases</th>
+      <th style="color: black;">Allergies</th>
+      <th style="color: black;">Prescription</th>
+    </tr>
+    {% for i in bd %}
+    <tr>
+      <td style="color: black;">{{forloop.counter}}</td>
+      <td style="color: black;">{{i.diseases}}</td>
+      <td style="color: black;">{{i.alergic}}</td>
+      <td style="color: black;">{{i.prescription}}</td>
+      <td><a href="/doctor_add_medicines/{{i.id}}" class="btn btn-success">Add Medicines</a></td>
+      <td><a href="/doctor_add_lab_test/{{i.id}}" class="btn btn-info">Add Lab Tests</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+<br><br><br><br>
+
+</body>
+{% endblock %}
+<!-- </html> -->

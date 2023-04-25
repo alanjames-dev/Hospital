@@ -1,0 +1,33 @@
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+</head> -->
+{% extends 'patientindex.html' %}
+{% block b4 %}
+<body>
+  <br><br><br>
+<form id="form1" name="form1" method="post" action="">
+  <h2 style="color: black;"> Test</h2>
+  <table class="table table-striped">
+    <tr>
+      <th style="color: black;">Slno</th>
+      <th style="color: black;">Doctor</th>
+      <th style="color: black;">Prescription</th>
+      <th style="color: black;">Test Details</th>
+    </tr>
+    {% for i in q %}
+    <tr>
+      <td style="color: black;">{{forloop.counter}}</td>
+      <td style="color: black;">{{i.prescription.booking.schedule_id.doctor_id.first_name}} {{i.booking.schedule_id.doctor_id.last_name}}</td>
+      <td style="color: black;">{{i.prescription.prescription}}</td>
+      <td style="color: black;">{{i.details}}</td>
+      <td><a href="user_request_for_lab/{{i.id}}" class="btn btn-success">Send Request</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}
+<!-- </html> -->

@@ -1,0 +1,50 @@
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+</head> -->
+{% extends 'index.html' %}
+{% block body %}
+
+<br><br>
+<body>
+<form id="form1" name="form1" method="post" action="logins">
+  {%csrf_token%}
+  <h2 style="color: white">Login</h2>
+  <table class="table" style="width: 500px;color: white;background:opacity: 0.5;">
+    <tr>         
+      <th  style="color:white">Username</th>
+      <td>
+        <input type="email" name="textfield" class="form-control" required autocomplete="off"/>
+      </td>
+    </tr>
+    <tr>
+      <td  style="color:white">Password</td>
+      <td>
+        <input type="password" name="textfield2" class="form-control" required autocomplete="off"/>
+      </td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>{{form.captcha}}</td>
+    </tr>
+    <tr>
+     
+      <td colspan="2" align="center"><label>
+        <input type="submit" name="Submit" value="Login" class="btn btn-info"/>
+      </label>
+    <!-- <a href="{% url 'register' %}">Signup</a></td> -->
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><a href="forgot" style="color : red">Forgot Password..</a></td>
+    </tr> 
+
+    <tr>
+      <td colspan="2" align="center">Don't have an account?<a href="/register">Signup</a></td>
+    </tr> 
+  </table>
+</form>
+</body>
+{% endblock %}
+<!-- </html> -->

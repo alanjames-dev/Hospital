@@ -1,0 +1,47 @@
+{% extends 'adminindex.html' %}
+{% block bb %}
+
+<script> 
+  function printDiv() { 
+    var divContents = document.getElementById("div_print").innerHTML; 
+    var a = window.open('', '', 'height=500, width=500'); 
+    a.document.write(divContents); 
+    a.document.close(); 
+    a.print(); 
+  } 
+</script> 
+
+<body  onload="printDiv()">
+
+  <div id="div_print" >
+  
+<form id="form1" name="form1" method="post" action="search">
+  <h2>DOCTORS</h2>
+  <table class="table table-striped" style="width: 800px;">
+  
+    <tr>
+      <td>sl.no</td>
+      <td>Name</td>
+      <td>Place</td>
+      <td>Phone</td>
+      <td>Email</td>
+      <td>Specialization</td>
+      
+    </tr>
+    {% for i in val %}
+    <tr>
+      <td>{{forloop.counter}}</td>
+      <td>{{i.first_name}} {{i.last_name}}</td>
+      <td>{{i.place}}</td>
+      <td>{{i.phone}}</td>
+      <td>{{i.email}}</td>
+      <td>{{i.specialization}}</td>
+      
+      
+    </tr>
+    {% endfor %}
+  </table>
+</form>
+</div>
+</body>
+{% endblock %}

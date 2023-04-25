@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+{% block body %}
+
+        <h2>OTP<span class="text-primary">.</span></h2>
+        <form method="post" action="" enctype="multipart/form-data" >
+          <table class="table" style="width: 500px;color: black">
+            <tr width="500">
+              <td>Entet OTP:</td>
+              <td><input type="text" class="form-control" name="otpp"></td>
+            </tr>
+            
+            <tr>
+              <td colspan="2" align="center"><input type="submit" class="btn btn-success" name="confirm" value="Confirm"></td>
+            </tr> 
+
+           
+          </table>
+        </form>
+        {% endblock %}

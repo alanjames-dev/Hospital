@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+{% block body %}
+
+<script>
+  var check = function() {
+    if (document.getElementById('password').value ==
+      document.getElementById('confirm_password').value) {
+      document.getElementById('message').style.color = 'green';
+      document.getElementById('message').innerHTML = 'matching';
+    } else {
+      document.getElementById('message').style.color = 'red';
+      document.getElementById('message').innerHTML = 'not matching';
+    }
+  }
+</script>
+
+        <h2>Set New Password<span class="text-primary">.</span></h2>
+        <form method="post" action="" enctype="multipart/form-data" >
+          <table class="table" style="width: 500px;color: black">
+            <tr width="500">
+              <td>New Password:</td>
+              <td><input type="text" id="password"  class="form-control" name="passw"></td>
+            </tr>
+            <tr>
+              <td>Confirm Password:</td>
+              <td><input type="text" id="confirm_password" class="form-control" name="cpassw"></td>
+            </tr>
+           
+            <tr>
+              <td colspan="2" align="center"><input type="submit" class="btn btn-success" name="confirm" value="Confirm"></td>
+            </tr> 
+
+           
+          </table>
+        </form>
+        {% endblock %}

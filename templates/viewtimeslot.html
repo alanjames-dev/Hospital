@@ -1,0 +1,45 @@
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+</head> -->
+{% extends 'patientindex.html' %}
+{% block b4 %}
+<body>
+<form id="form1" name="form1" method="post" action="/book">
+  <center>
+    <br><br><br><br><br><br>
+  <h1 style="color: black;">BOOK DOCTOR</h1>
+
+<table class="table" style="width: 400px">
+  <tr>
+    <th style="color: black"><h4>Appoinment Date:</h4></th>
+    <td> <input type="text" name="dt" readonly="" value="{{ dattt }}">
+               
+    </td>
+  </tr>
+  <tr>
+    <th style="color: black"><h4 style="color: black">select Time</h4></th>
+    <td>
+      <select name="time" class="form-control">
+{% for k in time_list %}
+  <option value="{{k}}">{{k}}</option>
+  {% endfor %}
+</select>
+    </td>
+  </tr>
+  <tr>
+    <!-- <td colspan="2" align="center"><a href="{% url 'book' %}">book</td> -->
+      <td colspan="2" align="center"><input type="submit" name="submit" value="submit" class="btn btn-info"></td>
+  </tr>
+</table>
+</form>
+<p>
+
+<br><br>
+</center>
+  
+</body>
+{% endblock %}
+<!-- </html> -->

@@ -1,0 +1,36 @@
+{% extends 'pharmacyindex.html' %}
+{% block b4 %}
+<br><br><br>
+<form method="post">
+<table class="table table-striped" style="width: 600px;color: black">
+  
+    {% for i in val %}
+<tr>
+    <th style="color: black">Name :</th>
+    <td style="color: black">{{ i.name }}</td>
+</tr>
+
+<tr>
+<th style="color: black">Phone</th>
+<td style="color: black"><input type="text" value="{{i.phone}}"  minlength="10" maxlength="10" pattern="[6-9]{1}[0-9]{9}" name="phone" required class="form-control"></td>
+</tr>
+<tr>
+<th style="color: black">Email</th>
+<td style="color: black"><input type="email" value="{{i.email}}"  name="email" required class="form-control"></td>
+</tr>
+
+<tr>
+<th style="color: black">Place</th>
+<td style="color: black"><input type="text" value="{{i.place}}" style="text-transform:capitalize;" name="place" required class="form-control"></td>
+</tr>
+{% endfor %}
+ <tr>
+
+ <td colspan="2" align="center"><input type="submit" name="update" class="btn btn-success"></td>
+</tr>
+               
+        
+</tbody>
+</table> 
+ </form>   
+ {% endblock %}

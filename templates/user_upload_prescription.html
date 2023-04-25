@@ -1,0 +1,55 @@
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+</head> -->
+{% extends 'patientindex.html' %}
+{% block b4 %}
+<body>
+<center>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h3 style="color: black;">Upload Your Prescription</h3>
+        <table class="table" style="width: 400px;">
+
+       <tr>
+        <th style="color: black;">PRESCRIPTION</th>
+        <td><input type="file" class="form-control" name="pres"></td>
+       </tr>
+        <tr>
+          <td colspan="2" align="center"><input type="submit" value="UPLOAD" class="btn btn-success"></td>
+        </tr>
+       
+      </table>
+
+      <h2>Upload Prescriptions</h2>
+  <table class="table table-striped">
+    <tr>
+      <th style="color: black;">sl.no</th>
+      <th style="color: black;">Patient</th>
+      <th style="color: black;">Image</th>
+      <th style="color: black;">Details</th>
+    </tr>
+    {% for i in q %}
+    <tr>
+      <td style="color: black;">{{forloop.counter}}</td>
+      <td style="color: black;">{{i.patient.first_name}} {{i.patient.last_name}}</td>
+      <td style="color: black;"><a href="/static/uploads/{{i.image}}"><img src="/static/uploads/{{i.image}}" height="100" width="100" alt=""></a></td>
+      <td style="color: black;">{{i.details}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+      </form>
+
+</center
+
+
+
+
+</body>
+{% endblock %}
+<!-- </html> -->
+
+

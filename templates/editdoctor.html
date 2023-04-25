@@ -1,0 +1,220 @@
+{% extends 'doctorindex.html' %}
+{% block b7 %}
+<form method="post" action="edittd">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a style="font-size: 30px;font-style: italic;font-family: monospace;" href="dhome">Welcome..... {{name}}</a> <i class="fa fa-angle-right"></i></li>
+    </ol>
+<!--four-grids here-->
+<div class="four-grids">
+ 
+  
+<!--   <div class="col-md-3 four-grid">
+    <div class="four-w3ls">
+      <div class="icon">
+        <i class="glyphicon glyphicon-folder-open" aria-hidden="true"></i>
+      </div>
+      <div class="four-text">
+        <h3>Projects</h3>
+        <h4>12,430</h4>
+        
+      </div>
+      
+    </div>
+  </div> -->
+<!--   <div class="col-md-3 four-grid">
+    <div class="four-wthree">
+      <div class="icon">
+        <i class="glyphicon glyphicon-briefcase" aria-hidden="true"></i>
+      </div>
+      <div class="four-text">
+        <h3>Old Projects</h3>
+        <h4>14,430</h4>
+        
+      </div>
+      
+    </div>
+  </div> -->
+  
+  <div class="clearfix"></div>
+</div>
+<!--//four-grids here-->
+<!--agileinfo-grap-->
+<!-- <div class="agileinfo-grap">
+<div class="agileits-box">
+<header class="agileits-box-header clearfix">
+<h3>Statistics</h3>
+<div class="toolbar">
+<div class="pull-left">
+<div class="btn-group">
+<a href="#" class="btn btn-default btn-xs">Daily</a>
+<a href="#" class="btn btn-default btn-xs active">Monthly</a>
+<a href="#" class="btn btn-default btn-xs">Yearly</a>
+</div>
+</div>
+<div class="pull-right">
+<div class="btn-group">
+<a aria-expanded="false" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+Export <i class="fa fa-angle-down"></i>
+</a>
+<ul class="dropdown-menu pull-right" role="menu">
+<li><a href="#">Export as PDF</a></li>
+<li><a href="#">Export as CSV</a></li>
+<li><a href="#">Export as PNG</a></li>
+<li class="divider"></li>
+<li><a href="#">Separated link</a></li>
+</ul>
+</div>
+<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-cog"></i></a>
+</div>
+</div>
+</header>
+<div class="agileits-box-body clearfix">
+<div id="hero-area"></div>
+</div>
+</div>
+</div> -->
+<!--//agileinfo-grap-->
+<!--photoday-section--> 
+
+
+<style type="text/css">
+.buttonA { 
+background-color:   #1E90FF;  
+border: none; 
+color: white; 
+padding: 12px 70px; 
+text-align: center; 
+text-decoration: none; 
+display: inline-block; 
+margin: 2px 6px; 
+cursor: pointer; 
+font-size:20px; 
+border-radius: 40%;
+} 
+</style>                     
+              <div class="col-sm-6 wthree-crd">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="widget widget-report-table">
+                                <header class="widget-header m-b-15">
+                                </header>
+                                
+                                <div class="row m-0 md-bg-grey-100 p-l-20 p-r-20">
+                                    <div class="card-header">
+                                      <h3 align="center">My Profile</h3>
+                                     
+                                  </div>
+                                    <!-- <div class="col-md-6 col-sm-6 col-xs-6 ">
+                                        <h2 class="text-right c-teal f-300 m-t-20">$21,235</h2>
+                                    </div> -->
+                                </div>
+                                
+
+                                <div class="widget-body p-15">
+                                    <table class="table table-bordered" style="width: 1000px">
+<table class="table table-striped" style="width: 600px;color: black">
+  
+    {% for i in val %}
+<tr>
+    <th style="color: black">First Name :</th>
+    <td style="color: black">{{ i.first_name }}</td>
+</tr>
+<tr>
+    <th style="color: black">Last Name :</th>
+    <td style="color: black">{{ i.last_name }}</td>
+</tr>
+
+<tr>
+<th style="color: black">Phone</th>
+<td style="color: black"><input type="text" readonly value="{{i.phone}}"  minlength="10" maxlength="10" pattern="[6-9]{1}[0-9]{9}" name="phone" required class="form-control"></td>
+</tr>
+<tr>
+<th style="color: black">Email</th>
+<td style="color: black"><input type="email" readonly value="{{i.email}}"  name="email" required class="form-control"></td>
+</tr>
+
+<tr>
+<th style="color: black">Place</th>
+<td style="color: black"><input type="text" value="{{i.place}}" style="text-transform:capitalize;" name="place" required class="form-control"></td>
+</tr>
+<tr>
+    <th style="color: black">Qualification</th>
+    <td style="color: black"><input type="text" value="{{i.qualification}}" style="text-transform:capitalize;" name="qu" required class="form-control"></td>
+    </tr>
+    <tr>
+        <th style="color: black">Experience</th>
+        <td style="color: black"><input type="text" value="{{i.experience}}" style="text-transform:capitalize;" name="exp" required class="form-control"></td>
+        </tr>  
+{% endfor %}
+ <tr>
+
+ <td colspan="2" align="center"><input type="submit" name="update" class="btn btn-success"></td>
+</tr>
+               
+        
+</tbody>
+</table> 
+</table>    
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="col-sm-6 w3-agileits-crd">
+
+<div class="card card-contact-list">
+
+</div>
+</div>
+<!-- <div class="col-sm-4 w3-agile-crd">
+<div class="card">
+<div class="card-body card-padding">
+<div class="widget">
+<header class="widget-header">
+    <h4 class="widget-title">Activities</h4>
+</header>
+<hr class="widget-separator">
+<div class="widget-body">
+    <div class="streamline">
+        <div class="sl-item sl-primary">
+            <div class="sl-content">
+                <small class="text-muted">5 mins ago</small>
+                <p>Williams has just joined Project X</p>
+            </div>
+        </div>
+        <div class="sl-item sl-danger">
+            <div class="sl-content">
+                <small class="text-muted">25 mins ago</small>
+                <p>Jane has sent a request for access</p>
+            </div>
+        </div>
+        <div class="sl-item sl-success">
+            <div class="sl-content">
+                <small class="text-muted">40 mins ago</small>
+                <p>Kate added you to her team</p>
+            </div>
+        </div>
+        <div class="sl-item">
+            <div class="sl-content">
+                <small class="text-muted">45 minutes ago</small>
+                <p>John has finished his task</p>
+            </div>
+        </div>
+        <div class="sl-item sl-warning">
+            <div class="sl-content">
+                <small class="text-muted">55 mins ago</small>
+                <p>Jim shared a folder with you</p>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+</div>
+</div>
+</div>
+</div> -->
+<div class="clearfix"></div>
+ </form>   
+ {% endblock %}

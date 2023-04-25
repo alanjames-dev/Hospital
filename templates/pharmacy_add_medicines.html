@@ -1,0 +1,186 @@
+{% extends 'pharmacyindex.html' %}
+{% block b4 %}
+<br><br><br>
+
+<div class="inner-block">
+
+
+
+<script src="
+https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+    </script>
+<script>
+    $(function() {
+        $("input[name='fname']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^A-Za-z ]/g, ''));
+
+        });
+        $("input[name='lname']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^A-Za-z ]/g, ''));
+
+        });
+        // $("input[name='dob']").on('input', function(e) {
+        //     $(this).val($(this).val().replace(/[^0-9/]/g, ''));
+
+        // });
+        
+        $("input[name='phone']").on('input', function(e) {
+        	$(this).val($(this).val().replace(/[^0-9]/g, ''));
+            
+        });
+        $("input[name='pincode']").on('input', function(e) {
+        	$(this).val($(this).val().replace(/[^0-9]/g, ''));
+            
+        });
+        $("input[name='email']").on('input', function(e) {
+              var re = /([A-Z0-9a-z_-][^@])+?@[^$#<>?]+?\.[\w]{1,}/.test(this.value);
+                if(!re) {
+                    $('#eerror').show();
+                } else {
+                    $('#eerror').hide();
+                }
+
+        });
+        $("input[name='address']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^A-Za-z0-9()/. ]/g, ''));
+
+        });
+        $("input[name='place']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^A-Za-z ]/g, ''));
+
+        });
+            
+        $("input[name='pwd']").on('input', function(e) {
+        	$(this).val($(this).val().replace(/[^0-9A-Za-z@/. ]/g, ''));
+            
+        });
+    });
+
+
+
+   var check = function() {
+  if (document.getElementById('password').value ==
+    document.getElementById('confirm_password').value) {
+    document.getElementById('message').style.color = 'green';
+    document.getElementById('message').innerHTML = 'matching';
+  } else {
+    document.getElementById('message').style.color = 'red';
+    document.getElementById('message').innerHTML = 'not matching';
+  }
+}
+</script>
+
+<center>
+		<br>
+        <h1>MANAGE MEDICINES</h1>
+		<br><br>
+		{%if obs %}
+		
+		<h3>Update Details</h3><br>
+    <form method="post" enctype="multipart/form-data">
+        <table class="table" style="width:  700px">
+		
+            <tr>
+                <th style="color: black">MEDICINE</th>
+                <td><input type="text" name="med" value="{{obs.medicine}}" class="form-control" id="lat">
+                
+            </tr>
+            
+            <tr>
+                <th style="color: black">DETAILS</th>
+                <td><input type="text" name="det" value="{{obs.details}}"  class="form-control"></td>
+            </tr>
+            <tr>
+                <th style="color: black">RATE</th>
+                <td>
+                <input type="text" name="rate" value="{{obs.price}}"  class="form-control"></td>
+            </tr>
+            
+    
+            <tr>
+                <th style="color: black">QUANTITY</th>
+                <td><input type="text" name="qua" value="{{obs.quantity}}"  class="form-control" ></td>
+            </tr>
+            
+            
+            <tr>
+                <td colspan="2" align="center"><input type="submit" name="submit" value="UPDATE" class="btn btn-primary"></td>
+            </tr>
+        </table>
+	</form>
+
+	{% else %}
+	<form method="post" enctype="multipart/form-data">
+    <form id="form1" name="form1" method="post" action="add" enctype="multipart/form-data">
+
+
+      
+
+		<table class="table" style="width:  700px">
+		
+		<tr>
+			<th style="color: black">MEDICINE</th>
+			<td><input type="text" name="med"  class="form-control" id="lat">
+			
+		</tr>
+		
+		<tr>
+			<th style="color: black">DETAILS</th>
+            <td><textarea name="det" id="" cols="80" rows="5" class="form-control" required></textarea></td>
+		</tr>
+		<tr>
+			<th style="color: black">RATE</th>
+			<td>
+			<input type="text" name="rate"  class="form-control"></td>
+		</tr>
+		
+
+		<tr>
+			<th style="color: black">QUANTITY</th>
+			<td><input type="text" name="qua"  class="form-control" ></td>
+		</tr>
+		
+		
+		<tr>
+			<td colspan="2" align="center"><input type="submit" name="submit" value="ADD" class="btn btn-primary"></td>
+		</tr>
+	</table>
+
+	</form>
+
+<br><br>
+
+
+
+<h2>Pharmacy Details</h2><br>
+<table class="table" style="color: black;width: 600px">
+	<tr>
+		<th style="color: black">Medicine</th>
+		<th style="color: black">Details</th>
+		<th style="color: black">Rate</th>
+		<th style="color: black">Quantity</th>
+		<th style="color: black"></th>
+	</tr>
+	{%for i in q %}
+			
+	
+	<tr>
+		<td style="color: black">{{i.medicine}}</td>
+		<td style="color: black">{{i.details}}</td>
+		<td style="color: black">{{i.price}}</td>
+		<td style="color: black">{{i.quantity}}</td>
+
+        <td style="color: black">
+			<a  href="pharmacy_update_medicines/{{i.id}}"><img src="/static/edit.png" height="30" width="30"></a>
+		<a href="pharmacy_delete_medicines/{{i.id}}"><img src="/static/delete.png" height="30" width="30"></a> 
+		</td>
+	</tr>
+	{% endfor %}
+</table>
+{% endif %}
+
+	</center>
+<br><br><br><br><br><br><br><br><br>
+</div>
+<!--inner block end here-->
+{% endblock %}

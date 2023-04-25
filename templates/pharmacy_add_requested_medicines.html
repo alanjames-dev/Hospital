@@ -1,0 +1,73 @@
+{% extends 'pharmacyindex.html' %}
+{% block b4 %}
+<br><br><br>
+
+<div class="inner-block">
+
+
+
+
+<center>
+		<br>
+      <form method="post">
+
+        <h2 style="color: black;">MANAGE MEDICINE DETAILS</h2>
+
+		<table class="table" style="width:  700px">
+		
+		<tr>
+			<th style="color: black;">MEDICINE</th>
+			<td>
+				<select name="med" required class="form-control">
+					{% for row in q %}
+					<option value="{{row.id}}">{{row.medicine}}</option>
+					{% endfor %}
+				</select>
+			
+		</tr>
+		<tr>
+			<th style="color: black;">QUANTITY</th>
+			<td><input type="text" name="qua"  class="form-control" ></td>
+		</tr>
+		
+		<tr>
+			<td colspan="2" align="center"><input type="submit" name="submit" value="ADD" class="btn btn-primary"></td>
+		</tr>
+	</table>
+
+
+
+		{% if q1 %}
+		<h2 style="color: black;">MEDICINES ADDED </h2>
+		<table class="table" width="400px">
+			<tr>
+				<th style="color: black;">MEDICINE</th>
+				<th style="color: black;">RATE</th>
+				<th style="color: black;">QUANTITY</th>
+				<TH style="color: black;">TOTAL</TH>
+			</tr>
+			{% for row in q1 %}
+			<tr>
+				<td style="color: black;">{{row.medicine.medicine}}</td>
+				
+				<td style="color: black;">{{row.rate}}</td>
+                <td style="color: black;">{{row.quantity}}</td>
+				<td style="color: black;">{{ row.total}}</td>
+				
+				{% comment %} <td><a href="?action=delete&id={{ row['medicine_id'] }}&prescription_id={{data['prescription_id']}}&name={{data['name']}}" class="btn btn-danger" >DELETE</a></td> {% endcomment %}
+			</tr>
+			{% endfor%}
+		</table>
+		 <tr>
+            <td colspan="6" align="center">TOTAL :{{totalamount}}</td>
+        </tr>
+		{% else %}
+		<h4 style="color: black;">NO MEDICINES ADDED IN OUR SYSTEM</h4>
+		{% endif %}
+		
+	</form>
+</center>
+<br><br><br><br><br><br><br><br><br>
+</div>
+<!--inner block end here-->
+{% endblock %}

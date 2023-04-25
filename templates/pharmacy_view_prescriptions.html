@@ -1,0 +1,42 @@
+{% extends 'pharmacyindex.html' %}
+{% block b4 %}
+<body>
+  <br><br><br><br>
+  <h1 style="color: black;">View Prescription</h1>
+<form id="form1" name="form1" method="post" action="">
+  <table class="table table-striped">
+    <tr>
+      {% comment %} <th style="color: black;">Patient</th> {% endcomment %}
+
+      <th style="color: black;">Customer</th>
+      <th style="color: black;">Phone</th>
+      <th style="color: black;">Total</th>
+      <th style="color: black;">Diseases</th>
+      <th style="color: black;">Allergic</th>
+      <th style="color: black;">Prescription</th>
+    </tr>
+    {% for i in q %}
+    <tr>
+      {% comment %} <td style="color: black;">{{i.booking.patient_id.first_name}} {{i.booking.patient_id.last_name}}</td> {% endcomment %}
+      <td style="color: black;">{{i.patient.first_name}} {{i.patient.last_name}}</td>
+      <td style="color: black;">{{i.patient.phone}}</td>
+      <td style="color: black;">{{i.total_amt}}</td>
+      <td style="color: black;">{{i.prescription.diseases}}</td>
+      <td style="color: black;">{{i.prescription.alergic}}</td>
+      <td style="color: black;">{{i.prescription.prescription}}</td>
+     
+      
+     
+     
+   <td style="color: black;">
+        <p><a class="btn btn-info" href="/pharmacy_add_requested_medicines/{{i.id}}">Add Medicine</a>
+      </td> 
+ 
+      
+   
+    </tr>
+    {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'doctorindex.html' %}
+{% block b7 %}
+<body>
+  <br><br><br>
+     
+ <center>
+     <h1> Set Time</h1><br>
+     <form method="post">
+         <table class="table" style="width: 400px">
+       <tr>
+         <td style="color: black;">Time</td>
+         <td><label>
+           <input type="time" class="form-control" name="time" required autocomplete="off"/>
+         </label></td>
+       </tr>
+    
+       <tr>
+         <td style="color: black;">Date</td>
+         <td><label>
+           <input type="date" class="form-control" name="date" required autocomplete="off" min="{{ hdate }}" id="date-picker" oninput="opdt()"/>
+         
+         </label></td>
+       </tr>
+     
+             <tr><td><br></td></tr>
+             <tr>
+                 <td colspan=2 align="center"><input class="btn btn-primary" type="submit" name="submit" value="Set"></td>
+             </tr>
+         </table>
+     </form>
+     <br><br>
+     
+ 
+     </center>
+ 
+ 
+ </div>
+</body>
+{% endblock %}
+<!-- </html> -->

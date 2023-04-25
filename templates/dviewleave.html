@@ -1,0 +1,28 @@
+{% extends 'doctorindex.html' %}
+{% block b7 %}
+<body>
+  <br><br>  <br><br> 
+<form id="form1" name="form1" method="post" action="">
+  <h2>LEAVE</h2>
+  <table class="table table-striped">
+    <tr>
+      <th style="color: black;">sl.no</th>
+      <th style="color: black;">Doctor Name</th>
+      <th style="color: black;">Leave</th>
+      <th style="color: black;">Date</th>
+      <th style="color: black;">Status</th>
+    </tr>
+    {% for i in val %}
+    <tr>
+      <td style="color: black;">{{forloop.counter}}</td>
+      <td style="color: black;">{{i.doctor_id.first_name}}</td>
+      <td style="color: black;">{{i.leave_des}}</td>
+      <td style="color: black;">{{i.startdate}}</td>
+      <td style="color: black;">{{i.status}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}
+<!-- </html> -->

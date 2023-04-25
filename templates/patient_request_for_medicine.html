@@ -1,0 +1,49 @@
+{% extends 'patientindex.html' %}
+{% block b4 %}
+<br><br><br>
+
+<div class="inner-block">
+
+
+
+<center>
+		<br>
+        <h1>MEDICINE REQUEST</h1>
+	
+	<form method="post" enctype="multipart/form-data">
+
+
+      
+
+		<table class="table" style="width: 400px">
+		
+		<tr>
+			<th style="color: black">Pharmacy</th>
+			<td>
+                <select name="pha" id="" required class="form-control">
+                    <option value="">--select--</option>
+                    {% for i in q %}
+                    <option value="{{i.id}}">{{i.name}}</option>
+                    {% endfor %}
+                </select>
+            </td>
+			
+		</tr>
+		<tr>
+			<td colspan="2" align="center"><input type="submit" name="submit" value="ADD" class="btn btn-primary"></td>
+		</tr>
+	</table>
+
+	</form>
+
+<br><br>
+
+
+
+
+
+	</center>
+<br><br><br><br><br><br><br><br><br>
+</div>
+<!--inner block end here-->
+{% endblock %}

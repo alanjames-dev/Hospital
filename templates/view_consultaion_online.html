@@ -1,0 +1,27 @@
+{% extends 'doctorindex.html' %}
+{% block b7 %}
+<body>
+  <br><br><br>
+<form id="form1" name="form1" method="post" action="">
+  <h2 style="color: black;">Online Consultation</h2>
+  <table class="table table-striped" border="2">
+    <tr>
+      <th style="color: black;">sl.no</th>
+      <th style="color: black;">Date</th>
+      <th style="color: black;">Time</th>
+      <th style="color: black;">Status</th>
+    </tr>
+    {% for i in val %}
+    <tr>
+      <td style="color: black;">{{forloop.counter}}</td>
+      <td style="color: black;">{{i.date}}</td>
+      <td style="color: black;">{{i.time}}</td>
+      <td style="color: black;">{{i.status}}</td>
+      <td><a href="set_consulting_time/{{i.id}}" class="btn btn-success">Set Consulting Time</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}
+<!-- </html> -->

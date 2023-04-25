@@ -1,0 +1,51 @@
+{% extends 'labindex.html' %}
+{% block b4 %}
+<br><br><br>
+
+<div class="inner-block">
+
+
+
+<center>
+		<br>
+        <h1>Test Result</h1>
+	
+	<form method="post" enctype="multipart/form-data">
+
+
+      
+
+		<table class="table" style="width: 400px">
+		
+		<tr>
+			<th style="color: black">Test</th>
+			<td>
+                <select name="test" id="" required class="form-control">
+                    <option value="">--select--</option>
+                    <option value="Blood">Blood Test</option>
+                   <option value="Scanning">Scanning</option>
+                   <option value="X-Ray">X-Ray</option>
+                   <option value="Urin">Urin</option>
+                   <option value="Other Tests">Other Test</option>
+                </select>
+            </td>
+			
+		</tr>
+		<tr>
+			<td colspan="2" align="center"><input type="submit" name="submit" value="ADD" class="btn btn-primary"></td>
+		</tr>
+	</table>
+
+	</form>
+
+<br><br>
+
+
+
+
+
+	</center>
+<br><br><br><br><br><br><br><br><br>
+</div>
+<!--inner block end here-->
+{% endblock %}

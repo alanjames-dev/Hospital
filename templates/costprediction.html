@@ -1,0 +1,67 @@
+
+{% extends 'patientindex.html' %}
+{% block b4 %}
+
+
+<body>
+<center>
+    <h1>Medical Insurance Cost</h1>
+
+	<form method="post" enctype="multipart/form-data">
+	<table class="table" style="width: 600PX;color: black">
+		<tr>
+			<th style="color: black">Age :</th>
+			<td><input type="text" style="text-transform:capitalize;" value="{{age}}" readonly name="age"  required class="form-control"></td>
+		</tr>
+		<tr>
+			<th style="color: black">Gender :</th>
+			<td><input type="text" style="text-transform:capitalize;" value="{{gender}}" readonly name="gender"  required class="form-control"></td>
+		</tr>
+		<tr>
+			<th style="color: black">BMI :</th>
+			<td><input type="text"  name="bmi" required class="form-control" ></td>
+		</tr>
+		<tr>
+			<th style="color: black">Children :</th>
+			<td><input type="text"  name="children"  required class="form-control"></td>
+		</tr>
+		<tr>
+			<th style="color: black">Are You a Smoker</th>
+			<td>
+                <select name="smk" id="" required class="form-control">
+                    <option value="">--Select Option--</option>
+                    <option value="0">Yes</option>
+                    <option value="1">NO</option>
+                </select>
+            </td>
+		</tr>
+		<tr>
+			<th style="color: black">Select Your region :</th>
+			<td>
+                <select name="reg" id="" required class="form-control">
+                    <option value="">--Select Option--</option>
+                    <option value="0">South East</option>
+                    <option value="1">South West</option>
+                    <option value="2">North East</option>
+                    <option value="3">North West</option>
+                </select>
+            </td>
+		</tr>
+		<tr><td><br></td></tr>
+		<tr>
+			<td colspan="2" align="center"><input class="btn btn-info" type="submit" name="doctor" value="Register"></td>
+		</tr>
+	</table>
+    </form>
+
+
+    {% if s %}
+    <h3>The insurance cost is USD : {{s}}</h3>
+    {% endif %}
+
+</center>
+
+{% endblock %}
+<!-- </html> -->
+
+

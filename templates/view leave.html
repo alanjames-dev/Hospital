@@ -1,0 +1,41 @@
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+</head> -->
+{% extends 'adminindex.html' %}
+{% block b8 %}
+<body>
+  <br><br>  <br><br>   
+<form id="form1" name="form1" method="post" action="">
+  <h2 style="color: black;"> LEAVE</h2>
+  <table class="table" style="width: 900px;" border="2">
+    <tr>
+      <th style="color: black;">sl.no</th>
+      <th style="color: black;">Doctor Name</th>
+      <th style="color: black;">Leave</th>
+      <th style="color: black;">Date</th>
+      <th style="color: black;">Status</th>
+    </tr>
+    {% for i in val %}
+    <tr>
+      <td style="color: black;">{{forloop.counter}}</td>
+      <td style="color: black;">{{i.doctor_id.first_name}} {{i.doctor_id.last_name}}</td>
+      <td style="color: black;">{{i.leave_des}}</td>
+      <td style="color: black;">{{i.startdate}} to {{i.enddate}}</td>
+      <td style="color: black;">
+        {% if i.status == 'pending' %}
+        <p><a href="{% url 'accept' doctor_id=i.leave_id %}" class="btn btn-success">Accept</a>
+        <a href="{% url 'reject' doctor_id=i.leave_id %}" class="btn btn-warning">Reject</a></p>
+        {% else %}
+        {{i.status}}
+        {% endif %}
+    </td>
+    </tr>
+    {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}
+<!-- </html> -->

@@ -1,0 +1,26 @@
+{% extends 'doctorindex.html' %}
+{% block b7 %}
+<body>
+  <br><br>  <br><br> 
+<form id="form1" name="form1" method="post" action="">
+  <h2>Upload Prescriptions</h2>
+  <table class="table table-striped">
+    <tr>
+      <th style="color: black;">sl.no</th>
+      <th style="color: black;">Patient</th>
+      <th style="color: black;">Image</th>
+      <th style="color: black;">Details</th>
+    </tr>
+    {% for i in q %}
+    <tr>
+      <td style="color: black;">{{forloop.counter}}</td>
+      <td style="color: black;">{{i.patient.first_name}} {{i.patient.last_name}}</td>
+      <td style="color: black;"><a href="/static/uploads/{{i.image}}"><img src="/static/uploads/{{i.image}}" height="100" width="100" alt=""></a></td>
+      <td style="color: black;">{{i.details}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}
+<!-- </html> -->

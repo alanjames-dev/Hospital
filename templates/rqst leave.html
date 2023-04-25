@@ -1,0 +1,88 @@
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+</head> -->
+{% extends 'doctorindex.html' %}
+{% block b7%}
+<script>
+  function checkButton() {  
+    let ltype = document.getElementById('s1')
+    let end_date = document.getElementById('end_date')
+    let start_date =document.getElementById('start_date')
+    let r1 =document.getElementById('r1')
+    let r2 =document.getElementById('r1')
+
+    if (document.getElementById('r1').checked) {
+        end_date.style.display = 'none'
+        ltype.style.display = 'block'
+        start_date.style.display = 'block'
+        // r2.checked='false';
+    }
+    if (document.getElementById('r2').checked) {
+        ltype.style.display = 'none'
+        end_date.style.display = 'block'
+        start_date.style.display = 'block'
+        // r1.checked='false';
+    } 
+    }
+  // function checkButton2() {  
+   
+   
+  // }
+</script>
+
+
+<script type='text/javascript' src='/JavaScriptSpellCheck/include.js' ></script>
+<script type='text/javascript'>$Spelling.SpellCheckAsYouType('myTextArea')</script>
+
+
+<body>
+  <div class="container">
+<form id="form1" name="form1" method="post" action="mleave" style="margin-top: 2em;">
+  <table class="table table-striped" style="width: 700px;">
+    <tr>
+      <td style="color: black;">Leave Description</td>
+      <td><label><textarea rows="5" id="myTextArea" cols="50" type="text" name="textfield" required></textarea>
+        
+      </label></td>
+    </tr>
+    <tr>
+      <td style="color: black;"> Leave Type</td>
+      <td><label>
+        <input type="radio" name="radio1" id="r1" onclick="checkButton()" value="single_day"/>Single Day
+        <input type="radio" name="radio1" id="r2" onclick="checkButton()" value="multiple_day"/>Multiple Day
+      </label></td>
+    </tr>
+    <tr id="s1">
+      <td style="color: black;"> Leave Time  :       <select name="select">
+        <option value="Morning" name="morning">Morning</option>
+        <option value="Afternoon" name="Afternoon">Afternoon</option>
+        <option value="Full day" name="fullday">Full Day</option>
+      </select>
+      </td>
+    </tr>
+    <tr id="start_date">
+      <td style="color: black;">Start Date</td>
+      <td><label>
+        <input type="date" name="textfield2"   min="{{ tdate }}" />
+      </label></td>
+    </tr>
+    <tr id="end_date">
+      <td style="color: black;">End Date</td>
+      <td><label>
+        <input type="date" name="textfield3"  min="{{ tdate }}"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><label>
+        <input type="submit" name="Submit" value="Submit" onclick="$Spelling.SpellCheckInWindow('myTextArea')" class="btn btn-info"/>
+      </label></td>
+    </tr>
+  </table>
+</form>
+</div>
+</body>
+{% endblock %}
+<!-- </html> -->

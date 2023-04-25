@@ -1,0 +1,109 @@
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+</head> -->
+{% extends 'patientindex.html' %}
+{% block b4 %}
+<body>
+<center>
+<h1>View Doctors </h1></center>
+<form method="post">
+  <center>
+<table class="table" style="width: 600px">
+  <tr>
+  <th><select name="select" class="form-control">
+    {% for i in doc %}
+    <option value="{{i.doctor_id}}">{{i.first_name}} {{i.last_name}}</option>
+    {% endfor %}
+  </select></th>
+    <td><input class="btn btn-success" type="submit" name="search" value="Search"></td>
+    <td><input class="btn btn-warning" type="submit" name="reset" value="Reset"></td>
+  </tr>
+</table>
+
+</form>
+
+</center
+{% if doc1 %}
+
+
+
+<center>
+<div class="widget-body ">
+  <center>
+  <table class="table table-bordered" style="background-color: #fff;width: 500px;">
+  
+  
+
+        {% for row in doc1 %}
+        <tr>
+          
+          <td style="color: black" colspan="2" align="center"><img src="/static/uploads/{{row.image}}" height="100" width="100" alt=""></td>
+        </tr>
+          <tr>
+              <th style="color: black">Name :</th>
+              <td style="color: black">{{ row.first_name }} {{ row.last_name }}</td>
+            </tr>
+           
+            <tr>
+              <th style="color: black">Phone</th>
+              <td style="color: black">{{ row.phone }}</td>
+            </tr>
+            <tr>
+              <th style="color: black">Email</th>
+               <td style="color: black">{{ row.email }}</td>
+            </tr>
+          <!-- <tr>
+            <td colspan="2" align="center"><a href="user_edit_profile.php" class="buttonA">Edit</a></td>
+          </tr> -->
+         {% endfor %}
+  
+ 
+  </table>    
+</div>
+</center>
+
+<div class="container">
+  <center>
+<form id="form1" name="form1" method="post" action="">
+  <!-- <table class="table table-striped">
+    <tr>
+      <td>sl.no</td>
+      <td>Name</td>
+      <td>Place</td>
+      <td>Phone</td>
+      <td>Email</td>
+    
+      
+      <td></td>
+    </tr>
+    {% for row in doc %}
+    
+      <td>{{forloop.counter}}</td>
+      <td>{{row.first_name}} {{row.last_name}}</td>
+      <td>{{row.place}}</td>
+      <td>{{row.phone}}</td>
+      <td>{{row.email}}</td>
+      {% endfor %}
+   
+
+  </table>
+  <table> -->
+    <br><br><br>
+    {% for i in sh %}
+      <a href="/viewtime/{{ i.schedule_id }}/{{ i.date }}" class="btn btn-info ">{{ i.date }}</a>&nbsp;&nbsp;&nbsp;
+    {% endfor %}
+  </table>
+</form>
+</center>
+</div>
+{% endif %}
+
+
+</body>
+{% endblock %}
+<!-- </html> -->
+
+

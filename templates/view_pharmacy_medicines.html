@@ -1,0 +1,50 @@
+{% extends 'patientindex.html' %}
+{% block b4 %}
+<body>
+    <center>
+    {% if q %}
+    <h2 style="color: black;">MEDICINES ADDED </h2>
+    <table class="table" width="400px">
+        <tr>
+            <th style="color: black;">MEDICINE</th>
+            <th style="color: black;">RATE</th>
+            <th style="color: black;">QUANTITY</th>
+            <TH style="color: black;">TOTAL</TH>
+        </tr>
+        {% for row in q %}
+        <tr>
+            <td style="color: black;">{{row.medicine.medicine}}</td>
+            
+            <td style="color: black;">{{row.rate}}</td>
+            <td style="color: black;">{{row.quantity}}</td>
+            <td style="color: black;">{{ row.total}}</td>
+            
+            {% comment %} <td><a href="?action=delete&id={{ row['medicine_id'] }}&prescription_id={{data['prescription_id']}}&name={{data['name']}}" class="btn btn-danger" >DELETE</a></td> {% endcomment %}
+        </tr>
+        {% endfor%}
+    </table>
+     <tr>
+        <td colspan="2" align="center">TOTAL :{{totalamount}}</td>
+
+
+         {% if status == 'pending' %}
+        <td style="color: black;">
+       <a class="btn btn-success btn-xs" href="/user_accept_medicine/{{uid}}/{{totalamount}}">Accept</a>
+
+         <a class="btn btn-success btn-xs" href="/user_reject_medicine/{{uid}}">Reject</a>
+     </td>
+
+       {% else %}
+  
+       <td style="color: black;">{{status}}</td>
+       {% endif %}
+    </tr>
+    {% else %}
+    <h4 style="color: black;">NO MEDICINES ADDED IN OUR SYSTEM</h4>
+    {% endif %}
+      </table>
+    </form>
+    </body>
+</center>
+{% endblock %}  
+    

@@ -1,0 +1,57 @@
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+</head> -->
+{% extends 'patientindex.html' %}
+{% block b4 %}
+<body>
+<script>
+  function printDiv() { 
+    var divContents = document.getElementById("div_print").innerHTML; 
+    var a = window.open('', '', 'height=500, width=500'); 
+    a.document.write(divContents); 
+    a.document.close(); 
+    a.print(); 
+  } 
+</script> 
+</head>
+<body onload="printDiv()">
+
+<div id="div_print" >
+  
+  <br><br><br><br>
+  <h1 style="color: black;">View Prescription</h1>
+<form id="form1" name="form1" method="post" action="">
+  <table class="table table-striped">
+    <tr>
+      {% comment %} <th style="color: black;">Patient</th> {% endcomment %}
+      <th style="color: black;">Diseases</th>
+      <th style="color: black;">Allergic</th>
+      <th style="color: black;">Prescription</th>
+    </tr>
+    {% for i in val %}
+    <tr>
+      {% comment %} <td style="color: black;">{{i.booking.patient_id.first_name}} {{i.booking.patient_id.last_name}}</td> {% endcomment %}
+      <td style="color: black;">{{i.diseases}}</td>
+      <td style="color: black;">{{i.alergic}}</td>
+      <td style="color: black;">{{i.prescription}}</td>
+     
+      
+     
+     
+         <td style="color: black;">
+        <p><a class="btn btn-info" href="/patient_request_for_medicine/{{i.id}}">Request For Medicine</a>
+      </td>
+
+      
+   
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+</form>
+</body>
+{% endblock %}
+<!-- </html> -->

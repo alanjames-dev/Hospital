@@ -1,0 +1,44 @@
+{% extends 'labindex.html' %}
+{% block b4 %}
+<body>
+  <br><br><br><br>
+  <h1 style="color: black;">View Prescription</h1>
+<form id="form1" name="form1" method="post" action="">
+  <table class="table table-striped">
+    <tr>
+      {% comment %} <th style="color: black;">Patient</th> {% endcomment %}
+
+      <th style="color: black;">Customer</th>
+      <th style="color: black;">Phone</th>
+      <th style="color: black;">Email</th>
+      <th style="color: black;">Diseases</th>
+      <th style="color: black;">Allergic</th>
+      <th style="color: black;">Prescription</th>
+      <th style="color: black;">Test Details</th>
+    </tr>
+    {% for i in q %}
+    <tr>
+      {% comment %} <td style="color: black;">{{i.booking.patient_id.first_name}} {{i.booking.patient_id.last_name}}</td> {% endcomment %}
+      <td style="color: black;">{{i.patient.first_name}} {{i.patient.last_name}}</td>
+      <td style="color: black;">{{i.patient.phone}}</td>
+      <td style="color: black;">{{i.patient.email}}</td>
+      <td style="color: black;">{{i.test.prescription.diseases}}</td>
+      <td style="color: black;">{{i.test.prescription.alergic}}</td>
+      <td style="color: black;">{{i.test.prescription.prescription}}</td>
+      <td style="color: black;">{{i.test.details}}</td>
+     
+      
+     
+     
+   <td style="color: black;">
+        <p><a class="btn btn-info" href="/lab_add_lab_test_results/{{i.id}}">Lab Test</a>
+      </td> 
+ 
+      
+   
+    </tr>
+    {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}
